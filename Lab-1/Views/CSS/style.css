@@ -1,0 +1,9 @@
+h3 {
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.thick-hr {
+  margin-top: .5em !important;
+  border: .2em solid #666;
+}
