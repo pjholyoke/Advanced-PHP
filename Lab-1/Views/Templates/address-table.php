@@ -17,7 +17,7 @@
           <td><?php echo $address["email"]; ?></td>
           <td><?php echo $address["addressline1"]; ?></td>
           <td><?php echo $address["city"]; ?></td>
-          <td><?php echo $address["state"]; ?></td>
+          <td><?php echo strtoupper($address["state"]); ?></td>
           <td><?php echo $address["zip"]; ?></td>
           <td><?php echo date_format(date_create($address["birthday"]),"d-m-Y"); ?></td>
         </tr>

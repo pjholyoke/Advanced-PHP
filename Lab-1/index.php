@@ -1,6 +1,7 @@
 <?php 
 require_once('./Models/DB.php');
 require_once('./Models/CRUD.php');
+require_once('./Models/Util.php');
 ?>
 
 <!DOCTYPE html>
@@ -34,24 +35,12 @@ require_once('./Models/CRUD.php');
       <?php
         $addrs = GetAllAddresses();
       
-        $fullname     = filter_input(INPUT_POST, 'fullname');
-        $email        = filter_input(INPUT_POST, 'email');
-        $addressline1 = filter_input(INPUT_POST, 'addressline1');
-        $city         = filter_input(INPUT_POST, 'city');
-        $state        = filter_input(INPUT_POST, 'state');
-        $zip          = filter_input(INPUT_POST, 'zip');
-        $birthday     = filter_input(INPUT_POST, 'birthday');
-
-        $errors = [];
-
         // Check request type.
         switch($_SERVER['REQUEST_METHOD']) {
           case "GET":
             include('Views/Templates/address-table.php');
             break;
           case "POST":
-            CreateAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday);
-            
             break;
           case "PUT":
             break; // Do nothing
