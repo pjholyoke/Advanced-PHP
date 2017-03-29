@@ -8,7 +8,7 @@ require_once('./Models/CRUD.php');
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Lab 1 - Peter Holyoke</title>
+    <title>Lab 1</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,38 +17,49 @@ require_once('./Models/CRUD.php');
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./">Lab 1</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="./">Home</a></li>
+          <li><a href="Add.php">Add</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
     <div class="container-fluid">
-      <h3>Lab 1</h3>
-      <hr class="thick-hr" />
-
       <?php
-      $addrs = GetAllAddresses();
-
-      $fullname     = filter_input(INPUT_POST, 'fullname');
-      $email        = filter_input(INPUT_POST, 'email');
-      $addressline1 = filter_input(INPUT_POST, 'addressline1');
-      $city         = filter_input(INPUT_POST, 'city');
-      $state        = filter_input(INPUT_POST, 'state');
-      $zip          = filter_input(INPUT_POST, 'zip');
-      $birthday     = filter_input(INPUT_POST, 'birthday');
+        $addrs = GetAllAddresses();
       
-      $errors = [];
+        $fullname     = filter_input(INPUT_POST, 'fullname');
+        $email        = filter_input(INPUT_POST, 'email');
+        $addressline1 = filter_input(INPUT_POST, 'addressline1');
+        $city         = filter_input(INPUT_POST, 'city');
+        $state        = filter_input(INPUT_POST, 'state');
+        $zip          = filter_input(INPUT_POST, 'zip');
+        $birthday     = filter_input(INPUT_POST, 'birthday');
 
-      // Check request type.
-      switch($_SERVER['REQUEST_METHOD']) {
-        case "GET":
-          echo "AAAA";
-          break;
-        case "POST":
-          break;
-        case "PUT":
-          break; // Do nothing
-        case "DELETE":
-          break; // Do nothing
-        default:
-          break; // Do nothing
-      }
+        $errors = [];
 
+        // Check request type.
+        switch($_SERVER['REQUEST_METHOD']) {
+          case "GET":
+            include('Views/Templates/address-table.php');
+            break;
+          case "POST":
+            CreateAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday);
+            
+            break;
+          case "PUT":
+            break; // Do nothing
+          case "DELETE":
+            break; // Do nothing
+          default:
+            break; // Do nothing
+        }
       ?>
 
     </div>
