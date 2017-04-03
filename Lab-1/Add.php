@@ -25,7 +25,6 @@
     </nav>
 
     <div class="container-fluid">
-
       <?php
       require_once('./Models/DB.php');
       require_once('./Models/CRUD.php');
@@ -46,17 +45,17 @@
         case "POST":
           if(empty($email) || !ValidateEmail($email)) {
             if(empty($email)) array_push($errors, "Email is required");
-            if(!ValidateEmail($email)) array_push($errors, "Email is invalid");    
+            if(!ValidateEmail($email) && !empty($email)) array_push($errors, "Email is invalid");    
           }
 
           if(empty($zip) || !ValidateZip($zip)) {
-            if(empty($zip)) array_push($errors, "Zipcode is empty");
-            if(!ValidateZip($zip)) array_push($errors, "Zipcode is invalid");
+            if(empty($zip)) array_push($errors, "Zipcode is required");
+            if(!ValidateZip($zip) && !empty($zip)) array_push($errors, "Zipcode is invalid");
           }
 
           if(empty($birthday) || ValidateDate($birthday)) {
-            if(empty($birthday)) array_push($errors, "Birthdate is empty");
-            if(!ValidateDate($birthday)) array_push($errors, "Birthdate is invalid");
+            if(empty($birthday)) array_push($errors, "Birthdate is required");
+            if(!ValidateDate($birthday) && !empty($birthday)) array_push($errors, "Birthdate is invalid");
           }
 
           if(empty($fullname)) array_push($errors, "Full name is required");
@@ -66,20 +65,17 @@
 
           if(count($errors) === 0)
           {
-            echo "Woo, good job.";
+            // Insert new data.
+            CreateAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday);
+            
+            // Clear out everything.
+            $fullname = $email = $addressline1 = $city = $state = $zip = $birthday = ""; 
+            
+            // Woo
+            include_once('/Views/Templates/success-template.php');
           }
           else 
-          {
-            echo "<pre>";
-            var_dump($errors);
-            echo("<br>");
-            echo("<br>");
-            var_dump($_POST);
-            //echo("$fullname, $email, $addressline1, $city, $state, $zip, $birthday");
-            echo "</pre>";
-          }
-
-          //CreateAddress($fullname, $email, $addressline1, $city, $state, $zip, $birthday);   
+            include_once('/Views/Templates/fail-template.php');
           break;
         case "PUT":
           break; // Do nothing
@@ -116,6 +112,7 @@
             <label for="state">State:</label>
             <!--<input type="text" class="form-control" id="state" name="state" placeholder="State" value="<?php //echo $state; ?>">-->
             <select class="form-control" id="state" name="state" placeholder="State" value="<?php echo $state; ?>">
+              <option value="">Please Select a State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -188,5 +185,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="Views/JS/scripts.js"></script>
   </body>
 </html>
