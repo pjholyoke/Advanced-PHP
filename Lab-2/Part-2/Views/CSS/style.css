@@ -1,0 +1,22 @@
+h3 {
+  padding: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.thick-hr {
+  margin-top: .5em !important;
+  border: .2em solid #666;
+}
+
+.nopad {
+  padding: 0px !important;
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
+.table-inverse thead {
+  background: #373A3C;
+  color: #fff;
+}
