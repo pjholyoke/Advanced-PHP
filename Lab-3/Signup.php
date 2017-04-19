@@ -2,7 +2,7 @@
   require_once('Autoloader.php');
   $util = new Util();
 
-  require_once('Views/Templates/header-logged-out.php');
+  require_once('Views/Templates/header.php');
 
   include_once('Views/Templates/signup.php');
 
@@ -34,7 +34,6 @@
       }
       else
         include('Views/Templates/error-template.php');
-      
     }
     catch(Exception $e) {
         array_push($errors, "An unknown error occurred");   

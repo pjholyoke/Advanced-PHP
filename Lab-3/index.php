@@ -1,6 +1,6 @@
 <?php 
   require_once('Autoloader.php');
-  require_once('Views/Templates/header-logged-out.php');
+  require_once('Views/Templates/header.php');
 ?>
   <div class="container-fluid">
     <?php
