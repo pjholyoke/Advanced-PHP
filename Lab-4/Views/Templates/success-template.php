@@ -3,15 +3,7 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success!</strong>
     <br />
-    You've successfully created an account. Click <a href="Login.php">here</a> to login!
-    <ul>
-      <?php
-        foreach($errors as $error) {
-          echo("<li>$error</li>");
-        }
-      ?>
-    </ul>
-
+    File successfully uploaded!
     <small>(Click me to clear this message)</small>
   </div>
 </div>

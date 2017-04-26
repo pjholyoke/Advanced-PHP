@@ -14,6 +14,7 @@
 
 <?php
   try {
+    $file = null;
     if(unlink(urldecode($filename))) { ?>
       <div class='text-center'>
         <h2 class='text-danger'><?php echo ucfirst(basename($filename));?> successfully deleted!</h2>
