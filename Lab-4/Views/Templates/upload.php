@@ -42,22 +42,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (false === $ext)
       throw new RuntimeException('Invalid file format.');
 
-    /* Alternative to getting file extention */
-    $name = $_FILES["file-upload"]["name"];
-    $ext = strtolower(end((explode(".", $name))));
-
-    if (preg_match("/^(jpeg|jpg|png|gif)$/", $ext) == false) {
-      throw new RuntimeException('Invalid file format.');
-    }
-    /* Alternative END */
-
-
     // You should name it uniquely.
     // DO NOT USE $_FILES['file-upload']['name'] WITHOUT ANY VALIDATION !!
     // On this example, obtain safe unique name from its binary data.
 
     $salt = uniqid(mt_rand(), true);
-    $fileName = 'img_' . sha1($salt . sha1_file($_FILES['file-upload']['tmp_name']));
+    $fileName = sha1($salt . sha1_file($_FILES['file-upload']['tmp_name']));
     $location = sprintf('./Models/Uploads/%s.%s', $fileName, $ext);
 
     if (!is_dir('./uploads')) {
