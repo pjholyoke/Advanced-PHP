@@ -1,0 +1,25 @@
+<h1>Corporations Table</h1>
+
+<div class="content">
+    
+    <h3>Search</h3>
+    <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+    <br />
+    <br /> 
+    
+    <table class="gridtable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>                
+            </tr>
+        </thead>    
+        
+        <tr ng-repeat="corps in vm.Corps">
+            <td>{{corps.corp}}</td>                  
+            <td><a ng-href="#/corp/{{corps.id}}">View</a></td>
+        </tr>
+    </table>
+        
+</div>
+
