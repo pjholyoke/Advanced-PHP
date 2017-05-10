@@ -48,8 +48,6 @@ try {
     }
 
     if ( 'PUT' === $verb ) {
-      $id = $serverData["id"];
-      
       if ( NULL === $id ) {
         throw new InvalidArgumentException('Corporation ID ' . $id . ' was not found');
       }

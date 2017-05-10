@@ -100,7 +100,7 @@
             httpRequest.send(null);
           }    
           else {
-            httpRequest.open("GET", url+"?id="+id, true);
+            httpRequest.open("GET", url+"/"+id, true);
             httpRequest.send(null);
           }
         } else {

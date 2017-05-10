@@ -47,6 +47,7 @@
       }            
     }
     
+    // Need to fix the API so that getting a corp passes id through URL.
     function getCorp(Corp_id) {
       var _url = url + '/' + Corp_id;
 

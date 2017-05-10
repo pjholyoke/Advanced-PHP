@@ -136,7 +136,6 @@ class RestServer {
      */
   private function getRestArgs() {
     $endpoint = filter_input(INPUT_GET, 'endpoint');
-    $this->id = filter_input(INPUT_GET, 'id');
     $restArgs = explode('/', rtrim($endpoint, '/'));
     $this->resource = array_shift($restArgs);
 
