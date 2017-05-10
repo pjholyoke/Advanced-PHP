@@ -1,23 +1,27 @@
 <h1>Corporation Details</h1>
 
 <div class="content">
-    
-    <h2>{{vm.Corp.corp | uppercase}}</h2>
 
-    <!--<p><strong> Born on:</strong> {{ vm.address.birthday | date:'longDate' }} </p>
+  <h2>{{vm.Corp.corp | uppercase}}</h2>
 
-    <p><strong>Email: </strong>
-        <a href="" ng-href="mailto:{{vm.address.email}}">{{vm.address.email}}</a>
-    </p>
+  <p><strong> Created on:</strong> {{ vm.Corp.incorp_dt | date:'longDate' }} </p>
 
-    <address>
-        {{vm.corp.addressline1}} <br />
-        {{vm.address.city}}, {{vm.address.state}} {{vm.address.zip}}
-    </address>-->
-    
-    
-    <div class="googleMap"></div>
-    
-    
-    <p><a href="#/address">Back</a></p>
+  <p>
+    <strong>Email: </strong>
+    <a href="" ng-href="mailto:{{vm.Corp.email}}">{{vm.Corp.email}}</a>
+  </p>
+
+  <p>
+    <strong>Owner: </strong>
+    <span>{{vm.Corp.owner}}</span>
+  </p>
+
+  <p>
+    <strong>Tel: </strong>
+    <a href="tel:{{vm.Corp.phone}}">{{vm.Corp.phone}}</a>
+  </p>
+
+  <div class="googleMap"></div>
+
+  <p><a href="#/address">Back</a></p>
 </div>

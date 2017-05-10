@@ -5,29 +5,31 @@
     .module('app.corp')
     .controller('CorpDetailController', CorpDetailController);
 
-  CorpDetailController.$inject = ['$routeParams','CorpService'];
+  CorpDetailController.$inject = ['$routeParams', 'CorpService'];
 
   /*
-     * This controller will find the details of an Corp from the Corp service.
-     */
+   * This controller will find the details of an Corp from the Corp service.
+   */
   function CorpDetailController($routeParams, CorpService) {
     var vm = this;
 
     vm.Corp = {};
-    var CorpID = $routeParams.CorpId;
+    var corpId = $routeParams.corpId;
 
     activate();
 
     ////////////
 
     function activate() {
-      CorpService.getCorp(CorpID).then(function (response) {
+      CorpService.getCorp(corpId).then(function (response) {
         vm.Corp = response;
+        console.log(vm.Corp);
         /*if (vm.Corp.hasOwnProperty('birthday')) {
                     vm.Corp.birthday = new Date(vm.Corp.birthday);
                 }
                 console.log(vm.Corp);                
                 loadMap('41.8239890,-71.4128340');*/
+        loadMap(vm.Corp.location);
       });
     }
 

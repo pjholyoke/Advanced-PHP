@@ -48,8 +48,8 @@
     }
     
     // Need to fix the API so that getting a corp passes id through URL.
-    function getCorp(Corp_id) {
-      var _url = url + '/' + Corp_id;
+    function getCorp(corpId) {
+      var _url = url + '/' + corpId;
 
       return $http.get(_url)
         .then(handleSuccess, handleFailed); 
