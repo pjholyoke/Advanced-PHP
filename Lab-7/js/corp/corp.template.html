@@ -3,6 +3,8 @@
 <div class="content">
     
     <h3>Search</h3>
+    <p><input type="text" ng-model="search"></p>
+    
     <!-- https://docs.angularjs.org/api/ng/filter/filter -->
     <br />
     <br /> 
@@ -15,7 +17,7 @@
             </tr>
         </thead>    
         
-        <tr ng-repeat="corps in vm.Corps">
+        <tr ng-repeat="corps in vm.Corps | filter:search">
             <td>{{corps.corp}}</td>                  
             <td><a ng-href="#/corp/{{corps.id}}">View</a></td>
         </tr>
