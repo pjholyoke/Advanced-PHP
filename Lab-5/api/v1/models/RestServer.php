@@ -138,7 +138,7 @@ class RestServer {
     $endpoint = filter_input(INPUT_GET, 'endpoint');
     $restArgs = explode('/', rtrim($endpoint, '/'));
     $this->resource = array_shift($restArgs);
-
+    
     if (isset($restArgs[0]) && is_numeric($restArgs[0])) {
       $this->id = intval($restArgs[0]);
     }

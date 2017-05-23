@@ -103,7 +103,15 @@
             httpRequest.open("GET", url+"/"+id, true);
             httpRequest.send(null);
           }
-        } else {
+        } 
+        else if(verb === 'PUT') {
+          if(id != null) {
+            httpRequest.open("PUT", url+"/"+id, true);
+          httpRequest.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+            httpRequest.send(JSON.stringify(data));
+          }
+        }
+        else {
           httpRequest.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
           httpRequest.send(JSON.stringify(data));
         }

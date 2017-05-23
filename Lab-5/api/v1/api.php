@@ -52,6 +52,7 @@ try {
         throw new InvalidArgumentException('Corporation ID ' . $id . ' was not found');
       }
       else {
+        $serverData['id'] = $id;
         if($resourceData->put($serverData)) {
           $restServer->setMessage("Corporation with ID of $id Updated Successfully");
           $restServer->setStatus(201);
